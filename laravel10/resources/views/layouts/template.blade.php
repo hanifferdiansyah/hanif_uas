@@ -62,7 +62,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ route('member') }}" class="nav-item nav-link">
+                    <a href="/member" class="nav-item nav-link">
                         <i class="fa-solid fa-dumbbell"></i>Member
                     </a>
 
@@ -184,13 +184,9 @@
 
 
             <!-- Blank Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>This is blank page</h3>
-                    </div>
-                </div>
-            </div>
+                <section>
+                    @yield('content')
+                </section>
             <!-- Blank End -->
 
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('alamat_petugas');
             $table->string('noHp_petugas');
             $table->integer('umur_petugas');
+            $table->timestamps();
         });
     }
 

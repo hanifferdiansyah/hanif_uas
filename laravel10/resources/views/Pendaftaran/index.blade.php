@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
 @section('title')
-    Data Member
+    Data Pendaftaran
 @endsection
 
 @section('headline')
-    Data Member
+    Data Pendaftaran
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 <div class="card mt-4 col-12 ">
     <div class="card-header">
         <h3 class="card-title">
-            <a href="{{ route('member.create') }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('pendaftaran.create') }}" class="btn btn-primary btn-sm">
                 <i class="fa fa-user-plus"></i> Tambah Data
             </a>
 
@@ -35,30 +35,25 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Member</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">No Hp</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Ket Pembayaran</th>
                                 <th scope="col">No Kartu</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @forelse ( $member as $data)
+                            @forelse ( $pendaftaran as $data)
                                 <tr>
                                     {{-- <th scope="row">{{$nomor++}}</th> --}}
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{$data->nm_member}}</td>
-                                    <td>{{$data->alamat_member}}</td>
-                                    <td>{{$data->noHp_member}}</td>
+                                    <td>{{$data->tgl}}</td>
+                                    <td>{{$data->ket_pembayaran}}</td>
                                     <td>{{$data->no_kartuMember}}</td>
 
                                     <td>
                                         <a href="" class="btn btn-warning btn-sm"><i class="fa fa-info"></i></a>
-                                        <a href="{{ url('/member/edit/' . $data->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a>
-
-
-
+                                        <a href="/dosen/edit/{{$data->id}}" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a>
 
                                         <!-- Button trigger modal -->
 
@@ -76,11 +71,11 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Apakah kamu yakin ingin menghapus Member <strong>{{ $data->nm_member }}</strong>?
+                                                        Apakah kamu yakin ingin menghapus data pada tanggal <br><strong>{{ $data->tgl }}</strong>?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                        <form action="{{ route('member.destroy', $data->id) }}" method="POST">
+                                                        <form action="{{ route('pendaftaran.destroy', $data->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Hapus</button>
@@ -89,7 +84,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </td>
                                 </tr>
                             @empty

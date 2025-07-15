@@ -35,10 +35,29 @@
                             <label for="exampleInputPassword1" class="form-label">No HP</label>
                             <input type="text" name="noHp_member" class="form-control text-white" id="exampleInputPassword1">
                         </div>
+                        {{-- <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">No Kartu Member</label>
+                                    <select name="no_kartuMember" id="" class="form-control">
+                                        <option value="">-Pilih-</option>
+                                        @foreach ($member as $item1)
+                                            <option value="{{$item1->id}}">{{$item1->no_kartuMember}}</option>
+                                        @endforeach
+
+                                    </select>
+                        </div> --}}
                         <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Nomor Kartu Member</label>
+                            <select name="pendaftaran" id="" class="form-control">
+                                <option value="">-Pilih No Kartu Member-</option>
+                                @foreach ($pendaftaran as $item)
+                                    <option {{$member->no_kartuMember == $item->id ? 'selected' :''}} value="{{$item->id}}">{{$item->no_kartuMember}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        {{-- <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">No Kartu</label>
                             <input type="text" name="no_kartuMember" class="form-control text-white" id="exampleInputPassword1">
-                        </div>
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>

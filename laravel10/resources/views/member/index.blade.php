@@ -51,7 +51,7 @@
                                     <td>{{$data->nm_member}}</td>
                                     <td>{{$data->alamat_member}}</td>
                                     <td>{{$data->noHp_member}}</td>
-                                    <td>{{$data->no_kartuMember}}</td>
+                                    <td>{{ optional($data->pendaftaran)->no_kartuMember ?? 'data tidak ditemukan' }}</td>
 
                                     <td>
                                         <a href="" class="btn btn-warning btn-sm"><i class="fa fa-info"></i></a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\member;
 use Illuminate\Http\Request;
+use App\Models\pendaftaran;
 
 class memberController extends Controller
 {
@@ -23,7 +24,8 @@ class memberController extends Controller
     public function create()
     {
 
-        return view('Member.formMember');
+        $pendaftaran = pendaftaran::all();
+        return view('Member.formMember',compact('pendaftaran'));
     }
 
     /**

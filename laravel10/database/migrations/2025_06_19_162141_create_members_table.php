@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nm_member');
             $table->string('alamat_member');
             $table->string('noHp_member');
-            $table->integer('no_kartuMember');
+            $table->bigInteger('pendaftarans_id');
         });
     }
 

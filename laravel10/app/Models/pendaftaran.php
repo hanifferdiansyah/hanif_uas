@@ -16,4 +16,12 @@ class pendaftaran extends Model
         'ket_pembayaran',
         'no_kartuMember',
     ];
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'no_kartuMember', 'no_kartuMember');
+    }
+
+
+
 }

@@ -18,5 +18,11 @@ class Member extends Model
         'no_kartuMember',
     ];
 
+    public function pendaftaran()
+    {
+        return $this->hasOne(Pendaftaran::class, 'no_kartuMember', 'no_kartuMember');
+    }
+
+
 
 }

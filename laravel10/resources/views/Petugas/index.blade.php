@@ -54,8 +54,8 @@
                                     <td>{{$data->umur_petugas}}</td>
 
                                     <td>
-                                        <a href="" class="btn btn-warning btn-sm"><i class="fa fa-info"></i></a>
-                                        <a href="/dosen/edit/{{$data->id}}" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a>
+
+                                        <a href="/petugas/edit/{{$data->id}}" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a>
 
 
                                         <!-- Button trigger modal -->

@@ -50,12 +50,17 @@ Route::get('/pendaftaran', [pendaftaranController::class, 'index']);
 Route::get('/pendaftaran/tambah', [pendaftaranController::class, 'create'])->name('pendaftaran.create');
 Route::post('/pendaftaran', [pendaftaranController::class, 'store'])->name('pendaftaran.store');
 Route::resource('pendaftaran', pendaftaranController::class);
+Route::get('/pendaftaran/edit/{id}', [pendaftaranController::class, 'edit']);
+Route::put('/pendaftaran/{id}', [pendaftaranController::class, 'update']);
+
 
 //PETUGAS
 Route::get('/petugas', [petugasController::class, 'index']);
 Route::get('/petugas/tambah', [petugasController::class, 'create'])->name('petugas.create');
 Route::post('/petugas', [petugasController::class, 'store'])->name('petugas.store');
 Route::resource('petugas', petugasController::class);
+Route::get('/petugas/edit/{id}', [petugasController::class, 'edit']);
+Route::put('/petugas/{id}', [petugasController::class, 'update']);
 
 
 // routes/web.php

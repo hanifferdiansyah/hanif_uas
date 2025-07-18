@@ -52,7 +52,9 @@ class pendaftaranController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pendaftaran = Pendaftaran::findOrFail($id);
+        // $pendaftaran = Pendaftaran::all();
+        return view('Pendaftaran.edit', compact('pendaftaran'));
     }
 
     /**
@@ -60,7 +62,13 @@ class pendaftaranController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pendaftaran = Pendaftaran::find($id);
+        $pendaftaran->tgl = $request->tgl;
+        $pendaftaran->ket_pembayaran = $request->ket_pembayaran;
+        $pendaftaran->no_kartuMember = $request->no_kartuMember;
+        $pendaftaran->save();
+
+        return redirect('/pendaftaran')->with('success', 'Data berhasil diupdate!');
     }
 
     /**

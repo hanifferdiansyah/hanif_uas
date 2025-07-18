@@ -14,8 +14,8 @@ class memberController extends Controller
     public function index()
     {
         $nomor = 1;
-        $member = Member::all();
-        return view('Member.index', compact('member','nomor'));
+        $member = Member::with('pendaftaran')->get();
+        return view('Member.index', compact('member', 'nomor'));
     }
 
     /**
@@ -25,7 +25,7 @@ class memberController extends Controller
     {
 
         $pendaftaran = pendaftaran::all();
-        return view('Member.formMember',compact('pendaftaran'));
+        return view('Member.formMember', compact('pendaftaran'));
     }
 
     /**
@@ -33,12 +33,20 @@ class memberController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nm_member' => 'required',
+            'alamat_member' => 'required',
+            'noHp_member' => 'required',
+            'pendaftaran' => 'required|exists:pendaftarans,id',
+        ]);
+
+
 
         $member = new Member;
         $member->nm_member = $request->nm_member;
         $member->alamat_member = $request->alamat_member;
         $member->noHp_member = $request->noHp_member;
-        $member->no_kartuMember = $request->no_kartuMember;
+        $member->no_kartuMember = $request->pendaftaran;
         $member->save();
 
 
@@ -55,8 +63,9 @@ class memberController extends Controller
      */
     public function edit(string $id)
     {
-        $member = Member::find($id);
-        return view('Member.edit',compact('member'));
+        $member = Member::findOrFail($id);
+        $pendaftaran = Pendaftaran::all();
+        return view('Member.edit', compact('member', 'pendaftaran'));
     }
 
     /**
@@ -64,11 +73,18 @@ class memberController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nm_member' => 'required',
+            'alamat_member' => 'required',
+            'noHp_member' => 'required',
+            'pendaftaran' => 'required|exists:pendaftarans,id',
+        ]);
+
         $member = Member::find($id);
         $member->nm_member = $request->nm_member;
         $member->alamat_member = $request->alamat_member;
         $member->noHp_member = $request->noHp_member;
-        $member->no_kartuMember = $request->no_kartuMember;
+        $member->no_kartuMember = $request->pendaftaran;
         $member->save();
 
         return redirect('/member')->with('success', 'Data berhasil diupdate!');

@@ -52,7 +52,8 @@ class petugasController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $petugas = Petugas::findOrFail($id);
+        return view('Petugas.edit', compact('petugas'));
     }
 
     /**
@@ -60,7 +61,14 @@ class petugasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $petugas = Petugas::find($id);
+        $petugas->nm_petugas = $request->nm_petugas;
+        $petugas->alamat_petugas = $request->alamat_petugas;
+        $petugas->noHp_petugas = $request->noHp_petugas;
+        $petugas->umur_petugas = $request->umur_petugas;
+        $petugas->save();
+
+        return redirect('/petugas')->with('success', 'Data berhasil diupdate!');
     }
 
     /**

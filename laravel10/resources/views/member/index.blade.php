@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid ">
 <div class="card mt-4 col-12 ">
     <div class="card-header">
         <h3 class="card-title">
@@ -51,11 +51,11 @@
                                     <td>{{$data->nm_member}}</td>
                                     <td>{{$data->alamat_member}}</td>
                                     <td>{{$data->noHp_member}}</td>
-                                    <td>{{ optional($data->pendaftaran)->no_kartuMember ?? 'data tidak ditemukan' }}</td>
-
+                                    <td>{{ $data->pendaftaran->no_kartuMember ?? '-' }}</td>
                                     <td>
-                                        <a href="" class="btn btn-warning btn-sm"><i class="fa fa-info"></i></a>
-                                        <a href="{{ url('/member/edit/' . $data->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a>
+
+                                        {{-- <a href="{{ url('/member/edit/' . $data->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a> --}}
+                                        <a href="/member/edit/{{$data->id}}" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a>
 
 
 

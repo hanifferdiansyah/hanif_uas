@@ -20,9 +20,10 @@ class Member extends Model
 
     public function pendaftaran()
     {
-        return $this->hasOne(Pendaftaran::class, 'no_kartuMember', 'no_kartuMember');
+        return $this->belongsTo(Pendaftaran::class, 'no_kartuMember');
+}
     }
 
 
 
-}
+
